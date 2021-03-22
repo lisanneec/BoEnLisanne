@@ -1,6 +1,6 @@
 ### --------- Bibliotheken en globale variabelen -----------------
 from tkinter import *
-import ConcertInformatieSQL
+import ConcertInformaticaSQL
 ### --------- Hoofdprogramma ---------------
 
 venster = Tk()
@@ -10,14 +10,14 @@ venster.iconbitmap("icon.ico")
 #tonen van gebouw gegevens in een list box 
 def ToonMenuGebouwInListbox():
     listboxMenuGebouw.delete(0, END) #dit zorgt ervoor dat de list box leeg wordt
-    Gebouwgegevens_tabel = ConcertInformatieSQL.vraagopGegevensGebouwgegevens_tabel()
+    Gebouwgegevens_tabel = ConcertInformaticaSQL.vraagopGegevensGebouwgegevens_tabel()
     for regel in Gebouwgegevens_tabel: 
         listboxMenuGebouw.insert(END, regel)
 listboxMenuGebouw.insert(0, "ID \t Plaats \t Postcode \t Adres \t Naam")
 
 def ToonMenuConcertInListbox():
     listboxMenuConcert.delete(0, END) #dit zorgt ervoor dat de list box leeg wordt
-    Gebouwgegevens_tabel = ConcertInformatieSQL.vraagopGegevensConcertgegevens_tabel()
+    Gebouwgegevens_tabel = ConcertInformaticaSQL.vraagopGegevensConcertgegevens_tabel()
     for regel in Concertgegevens_tabel: 
         listboxMenuConcert.insert(END, regel)
 listboxMenuConcert.insert(0, "ID \t Plaats \t Postcode \t Adres \t Naam")
@@ -32,7 +32,7 @@ artiest.grid(row = 1, column = 0, sticky = "W")
 input_ariest = StringVar()
 inputField_artiest = Entry(venster, textvariable=input_ariest)
 inputField_artiest.grid(row = 1, column = 1, sticky = "W")
-btnSearchArtiest = Button(venster, text ="Zoek Artiest", width=15, command= ConcertInformatieSQL.zoekArtiest)
+btnSearchArtiest = Button(venster, text ="Zoek Artiest", width=15, command= ConcertInformaticaSQL.zoekArtiest)
 btnSearchArtiest.grid(row=1, column=2, sticky = "W")
 
 #artiestBand

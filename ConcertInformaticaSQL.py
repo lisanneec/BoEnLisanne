@@ -6,7 +6,7 @@
 #
 ### ---------Bibliotheken en globale variabelen -------
 import sqlite3
-import ConcertInformatieGUI
+import ConcertInformaticaGUI
 with sqlite3.connect("database.db") as db:
     cursor = db.cursor()
 
