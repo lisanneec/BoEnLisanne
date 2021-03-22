@@ -2,6 +2,7 @@
 from tkinter import *
 import ConcertInformatieSQL
 ### --------- Hoofdprogramma ---------------
+#HOI
 venster = Tk()
 venster.wm_title("LBConcert")
 venster.iconbitmap("icon.ico")

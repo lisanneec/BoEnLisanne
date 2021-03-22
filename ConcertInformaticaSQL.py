@@ -1,6 +1,6 @@
 # Vul hier de naam van je programma in:
 # Concert informatie 
-# 
+# HOI BO
 # Vul hier jullie namen in:
 # Bo en Lisanne
 # 
