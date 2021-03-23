@@ -46,13 +46,6 @@ def vulTabelGebouwgegevensMetGegevens(Plaatsgebouw, Postcodegebouw, Gebouwadres,
 def vulTabelConcertgegevensMetGegevens(Artiestnummer_ID, Naamtour, Concertgebouw_ID): 
     cursor.execute("INSERT INTO Concertgegevens VALUES (NULL, ?, ?, ?) ", (Artiestnummer_ID, Naamtour, Concertgebouw_ID))
 
-def zoekArtiest():
-    gevonden_artiesten = zoekArtiestInTabel(ConcertInformaticaGUI.input_ariest.get())
-    for rij in gevonden_artiesten:
-        Artiestnaam= rij[0]
-        Artiestnummer_ID= rij[1]
-    print(gevonden_artiesten)
-
 def zoekArtiestInTabel(ingevoerde_artiestnaam):
     cursor.execute("SELECT * FROM Artiestgegevens WHERE Artiestnaam = ?", (ingevoerde_artiestnaam,))
     zoek_resultaat = cursor.fetchall()

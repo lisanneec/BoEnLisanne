@@ -7,23 +7,32 @@ venster = Tk()
 venster.wm_title("LBConcert")
 venster.iconbitmap("icon.ico")
 
+def zoekArtiest():
+    gevonden_artiesten = ConcertInformaticaSQL.zoekArtiestInTabel(.get())
+    print(gevonden_artiesten)
+    
+    zoekVeldArtiest.delete(0, END)
+    for rij in gevonden_artiesten:
+        zoekVeldArtiest.insert(END, rij[1])
+
 #tekstINTRO
 tekstWelkom = Label(venster, text="Hallo! Zoek uit waar jouw favoriete artiest speelt.")
 tekstWelkom.grid( row = 0, column = 0, sticky= "W")
 
 #zoekenARTIEST
-artiest = Label(venster, text="Artiestnaam: ")
-artiest.grid(row = 1, column = 0, sticky = "W")
-input_ariest = StringVar()
-inputField_artiest = Entry(venster, textvariable=input_ariest)
-inputField_artiest.grid(row = 1, column = 1, sticky = "W")
-btnSearchArtiest = Button(venster, text ="Zoek Artiest", width=15, command= ConcertInformaticaSQL.zoekArtiest)
+artiestlbl = Label(venster, text="Artiestnaam: ")
+artiestlbl.grid(row = 1, column = 0, sticky = "W")
+ingevoerde_artiest = StringVar()
+zoekVeldArtiest = Entry(venster, textvariable = ingevoerde_artiest)
+zoekVeldArtiest.grid(row = 1, column = 1, sticky = "W")
+btnSearchArtiest = Button(venster, text ="Zoek Artiest", width=15, command= zoekArtiest)
 btnSearchArtiest.grid(row=1, column=2, sticky = "W")
+
 
 #artiestBand
 bandArtiest = Label(venster, text="Artiest Band: ")
 bandArtiest.grid(row = 2, column = 0, sticky = "W")
-btnZoekOpBand = Button(venster, text="Zoek Band:")
+btnZoekOpBand = Button(venster, text="Zoek Band:", width=15, command="")
 btnZoekOpBand.grid(row = 2, column = 2, sticky = "W")
 variabele = StringVar()
 Num_Entry = Entry(venster, textvariable=variabele)
@@ -32,7 +41,7 @@ Num_Entry.grid(row=2, column= 1, sticky = "W")
 
 #gegevensArtiest
 btnToonGegevens = Button(venster, text="Toon gegevens", width=15,  command= "toonGegevens" ) #toonGegevens moet nog geschreven worden!!!
-btnToonGegevens.grid(row = 2, column = 2, sticky = "W")
+btnToonGegevens.grid(row = 3, column = 2, sticky = "W")
 tkst = Label(venster, text="Gegevens van de Artiest:" )
 tkst.grid(row = 3, column = 0, sticky = "W")
 
