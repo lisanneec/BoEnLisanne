@@ -2,7 +2,22 @@
 from tkinter import *
 import ConcertInformaticaSQL
 ### --------- Hoofdprogramma ---------------
+#tonen van gebouw gegevens in een list box 
+'''
+def ToonMenuGebouwInListbox():
+    listboxMenuGebouw.delete(0, END) #dit zorgt ervoor dat de list box leeg wordt
+    Gebouwgegevens_tabel = ConcertInformaticaSQL.vraagopGegevensGebouwgegevens_tabel()
+    for regel in Gebouwgegevens_tabel: 
+        listboxMenuGebouw.insert(END, regel)
+listboxMenuGebouw.insert(0, "ID \t Plaats \t Postcode \t Adres \t Naam")
 
+def ToonMenuConcertInListbox():
+    listboxMenuConcert.delete(0, END) #dit zorgt ervoor dat de list box leeg wordt
+    Gebouwgegevens_tabel = ConcertInformaticaSQL.vraagopGegevensConcertgegevens_tabel()
+    for regel in Concertgegevens_tabel: 
+        listboxMenuConcert.insert(END, regel)
+listboxMenuConcert.insert(0, "ID \t Plaats \t Postcode \t Adres \t Naam")
+'''
 venster = Tk()
 venster.wm_title("LBConcert")
 venster.iconbitmap("icon.ico")
@@ -34,14 +49,13 @@ IDlabelArtiest = Label(venster, text="Aangewezen ID-nummer Artiest: ")
 IDlabelArtiest.grid(row=2, column = 0, sticky="W")
 entryVeldIDArtiest = Entry(venster)
 entryVeldIDArtiest.grid( row = 2, column = 1, sticky="W")
+
 #artiestBand
 bandArtiest = Label(venster, text="Artiest Band: ")
 bandArtiest.grid(row = 3, column = 0, sticky = "W")
 variabele = StringVar()
 toonBandField = Entry(venster, textvariable=variabele)
 toonBandField.grid(row=3, column= 1, sticky = "W")
-
-
 
 #Concert
 concertnaamLbl = Label( venster, text = "Naam van concert: " )
