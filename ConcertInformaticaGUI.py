@@ -7,21 +7,6 @@ venster = Tk()
 venster.wm_title("LBConcert")
 venster.iconbitmap("icon.ico")
 
-#tonen van gebouw gegevens in een list box 
-def ToonMenuGebouwInListbox():
-    listboxMenuGebouw.delete(0, END) #dit zorgt ervoor dat de list box leeg wordt
-    Gebouwgegevens_tabel = ConcertInformaticaSQL.vraagopGegevensGebouwgegevens_tabel()
-    for regel in Gebouwgegevens_tabel: 
-        listboxMenuGebouw.insert(END, regel)
-listboxMenuGebouw.insert(0, "ID \t Plaats \t Postcode \t Adres \t Naam")
-
-def ToonMenuConcertInListbox():
-    listboxMenuConcert.delete(0, END) #dit zorgt ervoor dat de list box leeg wordt
-    Gebouwgegevens_tabel = ConcertInformaticaSQL.vraagopGegevensConcertgegevens_tabel()
-    for regel in Concertgegevens_tabel: 
-        listboxMenuConcert.insert(END, regel)
-listboxMenuConcert.insert(0, "ID \t Plaats \t Postcode \t Adres \t Naam")
-
 #tekstINTRO
 tekstWelkom = Label(venster, text="Hallo! Zoek uit waar jouw favoriete artiest speelt.")
 tekstWelkom.grid( row = 0, column = 0, sticky= "W")
@@ -38,11 +23,14 @@ btnSearchArtiest.grid(row=1, column=2, sticky = "W")
 #artiestBand
 bandArtiest = Label(venster, text="Artiest Band: ")
 bandArtiest.grid(row = 2, column = 0, sticky = "W")
+btnZoekOpBand = Button(venster, text="Zoek Band:")
+btnZoekOpBand.grid(row = 2, column = 2, sticky = "W")
 variabele = StringVar()
 Num_Entry = Entry(venster, textvariable=variabele)
 Num_Entry.grid(row=2, column= 1, sticky = "W")
 
-#gegevens van de artiest
+
+#gegevensArtiest
 btnToonGegevens = Button(venster, text="Toon gegevens", width=15,  command= "toonGegevens" ) #toonGegevens moet nog geschreven worden!!!
 btnToonGegevens.grid(row = 2, column = 2, sticky = "W")
 tkst = Label(venster, text="Gegevens van de Artiest:" )
