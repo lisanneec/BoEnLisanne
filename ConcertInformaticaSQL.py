@@ -54,11 +54,15 @@ def zoekArtiestInTabel(ingevoerde_artiestnaam):
     return zoek_resultaat
 
 def vraagOpGebouwgegevensTabel():
-    cursor.execute("SELECT * FROM tbl_Gebouwgegevens")
+    cursor.execute("SELECT * FROM Gebouwgegevens")
     resultaat = cursor.fetchall()
-    print("Tabel tbl_Gebouwgegevens:", resultaat)
+    print("Tabel Gebouwgegevens:", resultaat)
     return resultaat
-
+def vraagOpConcertgegevensTabel():
+    cursor.execute("SELECT * FROM Concertgegevens")
+    resultaat = cursor.fetchall()
+    print("Tabel Concertgegevens:", resultaat)
+    return resultaat
 ### ---------Hoofdprogramma  ----------------
 MaakNieuweTabellen()
 

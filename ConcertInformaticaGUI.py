@@ -2,28 +2,25 @@
 from tkinter import *
 import ConcertInformaticaSQL
 ### --------- Hoofdprogramma ---------------
-#tonen van gebouw gegevens in een list box 
-'''
+
 def ToonMenuGebouwInListbox():
     listboxMenuGebouw.delete(0, END) #dit zorgt ervoor dat de list box leeg wordt
-    Gebouwgegevens_tabel = ConcertInformaticaSQL.vraagopGegevensGebouwgegevens_tabel()
+    Gebouwgegevens_tabel = ConcertInformaticaSQL.vraagOpGebouwgegevensTabel()
     for regel in Gebouwgegevens_tabel: 
         listboxMenuGebouw.insert(END, regel)
-listboxMenuGebouw.insert(0, "ID \t Plaats \t Postcode \t Adres \t Naam")
-
-def ToonMenuConcertInListbox():
-    listboxMenuConcert.delete(0, END) #dit zorgt ervoor dat de list box leeg wordt
-    Gebouwgegevens_tabel = ConcertInformaticaSQL.vraagopGegevensConcertgegevens_tabel()
+    ListboxmenuConcert .delete(0, END) #dit zorgt ervoor dat de list box leeg wordt
+    Concertgegevens_tabel = ConcertInformaticaSQL.vraagOpConcertgegevensTabel()
     for regel in Concertgegevens_tabel: 
-        listboxMenuConcert.insert(END, regel)
-listboxMenuConcert.insert(0, "ID \t Plaats \t Postcode \t Adres \t Naam")
-'''
+        ListboxmenuConcert .insert(END, regel)
+
+
 venster = Tk()
 venster.wm_title("LBConcert")
 venster.iconbitmap("icon.ico")
 def leegVelden():
     entryVeldIDArtiest.delete(0, END)
     toonBandField.delete(0, END)
+    zoekVeldArtiest.delete(0, END)
 def zoekArtiest():
     gevonden_artiesten = ConcertInformaticaSQL.zoekArtiestInTabel(ingevoerde_artiest.get())
     zoekVeldArtiest.delete(0, END)
@@ -72,11 +69,11 @@ menuGebouw.grid(row=6, column=1)
 #GegevensConcert
 ConcertgegLbl = Label(venster, text="Concertgegevens: ")
 ConcertgegLbl.grid(row=7, column=0, sticky = "W")
-menuGegevens = Listbox(venster, height=6, width=50)
-menuGegevens.grid(row=7, column= 1)
+listboxMenuGebouw = Listbox(venster, height=6, width=50)
+listboxMenuGebouw.grid(row=7, column= 1)
 
 #BTN TOON GEGEVENS 2
-toonGegevensknop2 = Button(venster, text = "Toon gegevens", width = 15, command="ToonMenuConcertInListbox")
+toonGegevensknop2 = Button(venster, text = "Toon gegevens", width = 15, command=ToonMenuGebouwInListbox)
 toonGegevensknop2.grid(row=8, column=2, sticky = "W")
 
 #sluitenVENSTER
