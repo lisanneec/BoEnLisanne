@@ -2,6 +2,9 @@
 from tkinter import *
 import ConcertInformaticaSQL
 ### --------- Hoofdprogramma ---------------
+venster = Tk()
+venster.wm_title("LBConcert")
+venster.iconbitmap("icon.ico")
 
 def ToonMenuGebouwInListbox():
     listboxMenuGebouw.delete(0, END) #dit zorgt ervoor dat de list box leeg wordt
@@ -13,14 +16,12 @@ def ToonMenuGebouwInListbox():
     for regel in Concertgegevens_tabel: 
         ListboxmenuConcert .insert(END, regel)
 
-
-venster = Tk()
-venster.wm_title("LBConcert")
-venster.iconbitmap("icon.ico")
 def leegVelden():
     entryVeldIDArtiest.delete(0, END)
     toonBandField.delete(0, END)
     zoekVeldArtiest.delete(0, END)
+    ListboxmenuConcert.delete(0, END)
+    listboxMenuGebouw.delete(0, END)
 def zoekArtiest():
     gevonden_artiesten = ConcertInformaticaSQL.zoekArtiestInTabel(ingevoerde_artiest.get())
     zoekVeldArtiest.delete(0, END)
