@@ -5,7 +5,7 @@ import ConcertInformaticaSQL
 venster = Tk()
 venster.wm_title("LBConcert")
 venster.iconbitmap("icon.ico")
-
+from PIL import ImageTk, Image
 def ToonMenuGebouwInListbox():
     listboxMenuGebouw.delete(0, END) #dit zorgt ervoor dat de list box leeg wordt
     Gebouwgegevens_tabel = ConcertInformaticaSQL.vraagOpGebouwgegevensTabel()
@@ -22,12 +22,22 @@ def leegVelden():
     zoekVeldArtiest.delete(0, END)
     ListboxmenuConcert.delete(0, END)
     listboxMenuGebouw.delete(0, END)
+
 def zoekArtiest():
     gevonden_artiesten = ConcertInformaticaSQL.zoekArtiestInTabel(ingevoerde_artiest.get())
     zoekVeldArtiest.delete(0, END)
     for rij in gevonden_artiesten:
         entryVeldIDArtiest.insert(END, rij[0])
         toonBandField.insert(END, rij[2])
+
+#foto's
+'''
+canv = Canvas(venster, width=250, height=167)
+canv.grid(row=2, column=3)
+
+img = ImageTk.PhotoImage(Image.open("Ziggo_Dome.jpeg")) 
+canv.create_image(20, 20, image=img)
+'''
 
 #tekstINTRO
 tekstWelkom = Label(venster, text="Hallo! Zoek uit waar jouw favoriete artiest speelt. Voer de artiestnaam in, en krijg alle gegevens!")

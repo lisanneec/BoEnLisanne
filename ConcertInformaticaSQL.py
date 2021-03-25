@@ -39,7 +39,7 @@ def printTabel(tabel_naam):
 
 def vulTabelArtiestgegevensMetGegevens(Artiestnaam, Artiestband, Artiestgeboorte): 
     cursor.execute("INSERT INTO Artiestgegevens VALUES (NULL, ?, ?, ?) ", (Artiestnaam, Artiestband, Artiestgeboorte))
-    
+
 def vulTabelGebouwgegevensMetGegevens(Plaatsgebouw, Postcodegebouw, Gebouwadres, Gebouwnaam): 
     cursor.execute("INSERT INTO Gebouwgegevens VALUES (NULL, ?, ?, ?, ?) ", (Plaatsgebouw, Postcodegebouw, Gebouwadres, Gebouwnaam))
 
@@ -56,12 +56,10 @@ def zoekArtiestInTabel(ingevoerde_artiestnaam):
 def vraagOpGebouwgegevensTabel():
     cursor.execute("SELECT * FROM Gebouwgegevens")
     resultaat = cursor.fetchall()
-    print("Tabel Gebouwgegevens:", resultaat)
     return resultaat
 def vraagOpConcertgegevensTabel():
     cursor.execute("SELECT * FROM Concertgegevens")
     resultaat = cursor.fetchall()
-    print("Tabel Concertgegevens:", resultaat)
     return resultaat
 ### ---------Hoofdprogramma  ----------------
 MaakNieuweTabellen()
