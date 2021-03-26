@@ -1,20 +1,35 @@
 ### --------- Bibliotheken en globale variabelen -----------------
 from tkinter import *
+from PIL import ImageTk, Image
 import ConcertInformaticaSQL
 ### --------- Hoofdprogramma ---------------
+
 venster = Tk()
 venster.wm_title("LBConcert")
 venster.iconbitmap("icon.ico")
-from PIL import ImageTk, Image
-def ToonMenuGebouwInListbox():
+
+def klik(ingevoerde_artiest):
+    if ingevoerde_artiest == "Josh Dun":
+        ListboxUit.insert(0, "De band Twenty One Pilots speelt in Amsterdam.")
+    elif ingevoerde_artiest == "Brendon Urie":
+        ListboxUit.insert(0, "De band Panic! At The Disco speelt in Amsterdam.")
+    elif ingevoerde_artiest == "Ryan Ross":
+        ListboxUit.insert(0, "De band Panic! At The Disco speelt in Nijmegen." )
+    else: 
+        ListboxUit.insert(0, "Geen info")
+
+def ToonInfoInListbox():
     listboxMenuGebouw.delete(0, END) #dit zorgt ervoor dat de list box leeg wordt
     Gebouwgegevens_tabel = ConcertInformaticaSQL.vraagOpGebouwgegevensTabel()
+    listboxMenuGebouw.insert(0, "ID \t Plaats \t Postcode \t Straatnaam \t Gebouwnaam")
     for regel in Gebouwgegevens_tabel: 
         listboxMenuGebouw.insert(END, regel)
     ListboxmenuConcert .delete(0, END) #dit zorgt ervoor dat de list box leeg wordt
     Concertgegevens_tabel = ConcertInformaticaSQL.vraagOpConcertgegevensTabel()
+    ListboxmenuConcert.insert(0, "Artiest ID \t Concertnaam \t Concert ID")
     for regel in Concertgegevens_tabel: 
         ListboxmenuConcert .insert(END, regel)
+
 
 def leegVelden():
     entryVeldIDArtiest.delete(0, END)
@@ -71,11 +86,7 @@ concertnaamLbl.grid(row = 5, column = 0, sticky = "W")
 ListboxmenuConcert = Listbox(venster, height=6, width=50)
 ListboxmenuConcert.grid(row=5, column=1)
 
-#Gebouw
-gebouwnaamLbl = Label(venster, text = "Gebouwnaam: ")
-gebouwnaamLbl.grid(row = 6, column = 0, sticky = "W")
-menuGebouw = Listbox(venster,height=6, width=50)
-menuGebouw.grid(row=6, column=1)
+
 
 #GegevensConcert
 ConcertgegLbl = Label(venster, text="Concertgegevens: ")
@@ -83,13 +94,22 @@ ConcertgegLbl.grid(row=7, column=0, sticky = "W")
 listboxMenuGebouw = Listbox(venster, height=6, width=50)
 listboxMenuGebouw.grid(row=7, column= 1)
 
+#uiteindelijke gegevens
+LabelUit = Label(venster, text = "Jouw artiest speelt: ")
+LabelUit.grid(row = 8, column = 0, sticky="W")
+ListboxUit = Listbox(venster, height=6, width=50)
+ListboxUit.grid(row = 8, column = 1)
+buttonUit = Button(venster, text="klik", width = 15, command=klik)
+buttonUit.grid(row = 8, column = 2, sticky="W")
+
+
 #BTN TOON GEGEVENS 2
-toonGegevensknop2 = Button(venster, text = "Toon gegevens", width = 15, command=ToonMenuGebouwInListbox)
-toonGegevensknop2.grid(row=8, column=2, sticky = "W")
+toonGegevensknop2 = Button(venster, text = "Toon gegevens", width = 15, command=ToonInfoInListbox)
+toonGegevensknop2.grid(row=9, column=2, sticky = "W")
 
 #sluitenVENSTER
 closebtn = Button(venster, text="Sluit venster", width=15, command=venster.destroy)
-closebtn.grid(row = 9, column = 2, sticky = "W")
+closebtn.grid(row = 10, column = 2, sticky = "W")
 
 #resetButton
 resetButton = Button(venster, text="Leeg velden", width=15, command=leegVelden)

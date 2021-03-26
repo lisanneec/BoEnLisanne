@@ -57,20 +57,22 @@ def vraagOpGebouwgegevensTabel():
     cursor.execute("SELECT * FROM Gebouwgegevens")
     resultaat = cursor.fetchall()
     return resultaat
+
 def vraagOpConcertgegevensTabel():
     cursor.execute("SELECT * FROM Concertgegevens")
     resultaat = cursor.fetchall()
     return resultaat
 ### ---------Hoofdprogramma  ----------------
 MaakNieuweTabellen()
-
-#GEGEVENS TABELLEN
+#artiestgegevens tabel
 vulTabelArtiestgegevensMetGegevens("Josh Dun","Twenty One Pilots", "1988-02-12")
 vulTabelArtiestgegevensMetGegevens("Brendon Urie","Panic! At the disco", "1992-11-07")
 vulTabelArtiestgegevensMetGegevens("Ryan Ross","Panic! At the disco", "NULL")
+#gebouwgegevens tabel
 vulTabelGebouwgegevensMetGegevens("Amsterdam","1101DS", "De passage 10", "Ziggo Dome")
 vulTabelGebouwgegevensMetGegevens("Amsterdam","1101AX","Johan Cruijf 590", "AFAS")
 vulTabelGebouwgegevensMetGegevens("Nijmegen","6512AB","Station plein 1", "Doornroosje")
+#concertgegevens tabel
 vulTabelConcertgegevensMetGegevens(0,"Bandito",223)
 vulTabelConcertgegevensMetGegevens(1,"Pray for the Wicked",224)
 vulTabelConcertgegevensMetGegevens(2,"Pray for the Wicked",225)
