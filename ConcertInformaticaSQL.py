@@ -62,6 +62,7 @@ def vraagOpConcertgegevensTabel():
     cursor.execute("SELECT * FROM Concertgegevens")
     resultaat = cursor.fetchall()
     return resultaat
+
 ### ---------Hoofdprogramma  ----------------
 MaakNieuweTabellen()
 #artiestgegevens tabel

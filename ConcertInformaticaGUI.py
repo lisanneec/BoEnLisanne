@@ -8,7 +8,8 @@ venster = Tk()
 venster.wm_title("LBConcert")
 venster.iconbitmap("icon.ico")
 
-def klik(ingevoerde_artiest):
+def ToonUitGegevensInListBox():
+    ingevoerde_artiest = zoekVeldArtiest.get()
     if ingevoerde_artiest == "Josh Dun":
         ListboxUit.insert(0, "De band Twenty One Pilots speelt in Amsterdam.")
     elif ingevoerde_artiest == "Brendon Urie":
@@ -37,10 +38,10 @@ def leegVelden():
     zoekVeldArtiest.delete(0, END)
     ListboxmenuConcert.delete(0, END)
     listboxMenuGebouw.delete(0, END)
+    ListboxUit.delete(0, END)
 
 def zoekArtiest():
     gevonden_artiesten = ConcertInformaticaSQL.zoekArtiestInTabel(ingevoerde_artiest.get())
-    zoekVeldArtiest.delete(0, END)
     for rij in gevonden_artiesten:
         entryVeldIDArtiest.insert(END, rij[0])
         toonBandField.insert(END, rij[2])
@@ -55,7 +56,7 @@ canv.create_image(20, 20, image=img)
 '''
 
 #tekstINTRO
-tekstWelkom = Label(venster, text="Hallo! Zoek uit waar jouw favoriete artiest speelt. Voer de artiestnaam in, en krijg alle gegevens!")
+tekstWelkom = Label(venster, text="Hallo! Voer de artiestnaam in, en krijg alle gegevens!")
 tekstWelkom.grid( row = 0, column = 0, sticky= "W")
 
 #zoekenARTIEST
@@ -86,8 +87,6 @@ concertnaamLbl.grid(row = 5, column = 0, sticky = "W")
 ListboxmenuConcert = Listbox(venster, height=6, width=50)
 ListboxmenuConcert.grid(row=5, column=1)
 
-
-
 #GegevensConcert
 ConcertgegLbl = Label(venster, text="Concertgegevens: ")
 ConcertgegLbl.grid(row=7, column=0, sticky = "W")
@@ -99,13 +98,12 @@ LabelUit = Label(venster, text = "Jouw artiest speelt: ")
 LabelUit.grid(row = 8, column = 0, sticky="W")
 ListboxUit = Listbox(venster, height=6, width=50)
 ListboxUit.grid(row = 8, column = 1)
-buttonUit = Button(venster, text="klik", width = 15, command=klik)
-buttonUit.grid(row = 8, column = 2, sticky="W")
+buttonUit = Button(venster, text="Informatie Concert", width = 15, command=ToonUitGegevensInListBox)
+buttonUit.grid(row = 9, column = 2, sticky="W")
 
-
-#BTN TOON GEGEVENS 2
+#BTN TOON GEGEVENS
 toonGegevensknop2 = Button(venster, text = "Toon gegevens", width = 15, command=ToonInfoInListbox)
-toonGegevensknop2.grid(row=9, column=2, sticky = "W")
+toonGegevensknop2.grid(row=8, column=2, sticky = "W")
 
 #sluitenVENSTER
 closebtn = Button(venster, text="Sluit venster", width=15, command=venster.destroy)
