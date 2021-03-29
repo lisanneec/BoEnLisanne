@@ -98,7 +98,7 @@ LabelUit = Label(venster, text = "Jouw artiest speelt: ")
 LabelUit.grid(row = 8, column = 0, sticky="W")
 ListboxUit = Listbox(venster, height=6, width=50)
 ListboxUit.grid(row = 8, column = 1)
-buttonUit = Button(venster, text="Informatie Concert5", width = 15, command=ToonUitGegevensInListBox)
+buttonUit = Button(venster, text="Informatie Concert", width = 15, command=ToonUitGegevensInListBox)
 buttonUit.grid(row = 9, column = 2, sticky="W")
 
 #BTN TOON GEGEVENS
