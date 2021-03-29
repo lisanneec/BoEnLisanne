@@ -11,11 +11,11 @@ venster.iconbitmap("icon.ico")
 def ToonUitGegevensInListBox():
     ingevoerde_artiest = zoekVeldArtiest.get()
     if ingevoerde_artiest == "Josh Dun":
-        ListboxUit.insert(0, "De band Twenty One Pilots speelt in Amsterdam.")
+        ListboxUit.insert(0, "De band Twenty One Pilots speelt in Amsterdam, Ziggo Dome.")
     elif ingevoerde_artiest == "Brendon Urie":
-        ListboxUit.insert(0, "De band Panic! At The Disco speelt in Amsterdam.")
+        ListboxUit.insert(0, "De band Panic! At The Disco speelt in Amsterdam, AFAS.")
     elif ingevoerde_artiest == "Ryan Ross":
-        ListboxUit.insert(0, "De band Panic! At The Disco speelt in Nijmegen." )
+        ListboxUit.insert(0, "De band Panic! At The Disco speelt in Nijmegen, Doornroosje." )
     else: 
         ListboxUit.insert(0, "Geen info")
 
@@ -98,7 +98,7 @@ LabelUit = Label(venster, text = "Jouw artiest speelt: ")
 LabelUit.grid(row = 8, column = 0, sticky="W")
 ListboxUit = Listbox(venster, height=6, width=50)
 ListboxUit.grid(row = 8, column = 1)
-buttonUit = Button(venster, text="Informatie Concert", width = 15, command=ToonUitGegevensInListBox)
+buttonUit = Button(venster, text="Informatie Concert5", width = 15, command=ToonUitGegevensInListBox)
 buttonUit.grid(row = 9, column = 2, sticky="W")
 
 #BTN TOON GEGEVENS
