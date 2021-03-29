@@ -46,14 +46,15 @@ def zoekArtiest():
         entryVeldIDArtiest.insert(END, rij[0])
         toonBandField.insert(END, rij[2])
 
+
 #foto's
-'''
+
 canv = Canvas(venster, width=250, height=167)
 canv.grid(row=2, column=3)
 
 img = ImageTk.PhotoImage(Image.open("Ziggo_Dome.jpeg")) 
 canv.create_image(20, 20, image=img)
-'''
+
 
 #tekstINTRO
 tekstWelkom = Label(venster, text="Hallo! Voer de artiestnaam in, en krijg alle gegevens!")
