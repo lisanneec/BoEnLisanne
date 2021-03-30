@@ -7,9 +7,9 @@ import ConcertInformaticaSQL
 venster = Tk()
 venster.wm_title("LBConcert")
 venster.iconbitmap("icon.ico")
-
+#functies voor knoppen 
 def ToonUitGegevensInListBox():
-    ingevoerde_artiest = zoekVeldArtiest.get()
+    ingevoerde_artiest = zoekVeldArtiest.get() #haalt de gegevens van het invoerveld voor de artiest
     if ingevoerde_artiest == "Josh Dun":
         ListboxUit.insert(0, "De band Twenty One Pilots speelt in Amsterdam, Ziggo Dome.")
     elif ingevoerde_artiest == "Brendon Urie":
@@ -21,18 +21,19 @@ def ToonUitGegevensInListBox():
 
 def ToonInfoInListbox():
     listboxMenuGebouw.delete(0, END) #dit zorgt ervoor dat de list box leeg wordt
-    Gebouwgegevens_tabel = ConcertInformaticaSQL.vraagOpGebouwgegevensTabel()
+    Gebouwgegevens_tabel = ConcertInformaticaSQL.vraagOpGebouwgegevensTabel() #hierbij wordt de functie gelinkt aan variabele
     listboxMenuGebouw.insert(0, "ID \t Plaats \t Postcode \t Straatnaam \t Gebouwnaam")
     for regel in Gebouwgegevens_tabel: 
         listboxMenuGebouw.insert(END, regel)
     ListboxmenuConcert .delete(0, END) #dit zorgt ervoor dat de list box leeg wordt
-    Concertgegevens_tabel = ConcertInformaticaSQL.vraagOpConcertgegevensTabel()
+    Concertgegevens_tabel = ConcertInformaticaSQL.vraagOpConcertgegevensTabel() #hierbij wordt de functie gelinkt aan variabele
     ListboxmenuConcert.insert(0, "Artiest ID \t Concertnaam \t Concert ID")
     for regel in Concertgegevens_tabel: 
         ListboxmenuConcert .insert(END, regel)
 
 
 def leegVelden():
+    #deze functie leegt listbox + entryfields
     entryVeldIDArtiest.delete(0, END)
     toonBandField.delete(0, END)
     zoekVeldArtiest.delete(0, END)
@@ -41,21 +42,12 @@ def leegVelden():
     ListboxUit.delete(0, END)
 
 def zoekArtiest():
-    gevonden_artiesten = ConcertInformaticaSQL.zoekArtiestInTabel(ingevoerde_artiest.get())
+    #zoek artiest vindt ingevoerde artiesten in database 
+    gevonden_artiesten = ConcertInformaticaSQL.zoekArtiestInTabel(ingevoerde_artiest.get()) #gebruikt functie uit SQL 
     for rij in gevonden_artiesten:
         entryVeldIDArtiest.insert(END, rij[0])
         toonBandField.insert(END, rij[2])
-
-
-#foto's
-
-canv = Canvas(venster, width=250, height=167)
-canv.grid(row=2, column=3)
-
-img = ImageTk.PhotoImage(Image.open("Ziggo_Dome.jpeg")) 
-canv.create_image(20, 20, image=img)
-
-
+        
 #tekstINTRO
 tekstWelkom = Label(venster, text="Hallo! Voer de artiestnaam in, en krijg alle gegevens!")
 tekstWelkom.grid( row = 0, column = 0, sticky= "W")
