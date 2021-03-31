@@ -1,6 +1,5 @@
 ### --------- Bibliotheken en globale variabelen -----------------
 from tkinter import *
-from PIL import ImageTk, Image
 import ConcertInformaticaSQL
 ### --------- Hoofdprogramma ---------------
 
