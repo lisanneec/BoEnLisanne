@@ -21,14 +21,14 @@ def ToonUitGegevensInListBox():
 def ToonInfoInListbox():
     listboxMenuGebouw.delete(0, END) #dit zorgt ervoor dat de list box leeg wordt
     Gebouwgegevens_tabel = ConcertInformaticaSQL.vraagOpGebouwgegevensTabel() #hierbij wordt de functie gelinkt aan variabele
-    listboxMenuGebouw.insert(0, "ID \t Plaats \t Postcode \t Straatnaam \t Gebouwnaam")
-    for regel in Gebouwgegevens_tabel: 
-        listboxMenuGebouw.insert(END, regel)
+    listboxMenuGebouw.insert(0, "ID \t Plaats \t Postcode \t Straatnaam \t Gebouwnaam") #kolomnamen
+    for regel in Gebouwgegevens_tabel: #haalt alle gegevens uit tabel
+        listboxMenuGebouw.insert(END, regel) #insert tabelgegevens
     ListboxmenuConcert .delete(0, END) #dit zorgt ervoor dat de list box leeg wordt
     Concertgegevens_tabel = ConcertInformaticaSQL.vraagOpConcertgegevensTabel() #hierbij wordt de functie gelinkt aan variabele
-    ListboxmenuConcert.insert(0, "Artiest ID \t Concertnaam \t Concert ID")
-    for regel in Concertgegevens_tabel: 
-        ListboxmenuConcert .insert(END, regel)
+    ListboxmenuConcert.insert(0, "Artiest ID \t Concertnaam \t Concert ID") #kolomnamen
+    for regel in Concertgegevens_tabel: #haalt alle gegevens uit tabel
+        ListboxmenuConcert.insert(END, regel) #insert de tabelgegevens
 
 
 def leegVelden():
@@ -43,7 +43,8 @@ def leegVelden():
 def zoekArtiest():
     #zoek artiest vindt ingevoerde artiesten in database 
     gevonden_artiesten = ConcertInformaticaSQL.zoekArtiestInTabel(ingevoerde_artiest.get()) #gebruikt functie uit SQL 
-    for rij in gevonden_artiesten:
+    for rij in gevonden_artiesten: 
+        #entryfields worden gevuld met ID en Band van artiest
         entryVeldIDArtiest.insert(END, rij[0])
         toonBandField.insert(END, rij[2])
         

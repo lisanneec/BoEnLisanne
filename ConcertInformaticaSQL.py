@@ -55,17 +55,19 @@ def zoekArtiestInTabel(ingevoerde_artiestnaam):
     return zoek_resultaat
 
 def vraagOpGebouwgegevensTabel():
+    #fetcht gegevens van Gebouwgegevens
     cursor.execute("SELECT * FROM Gebouwgegevens")
     resultaat = cursor.fetchall()
     return resultaat
 
 def vraagOpConcertgegevensTabel():
+    #fetcht gegevens van Concertgegevens
     cursor.execute("SELECT * FROM Concertgegevens")
     resultaat = cursor.fetchall()
     return resultaat
 
 ### ---------Hoofdprogramma  ----------------
-MaakNieuweTabellen()
+MaakNieuweTabellen() #tabellen aangemaakt
 #artiestgegevens tabel
 vulTabelArtiestgegevensMetGegevens("Josh Dun","Twenty One Pilots", "1988-02-12")
 vulTabelArtiestgegevensMetGegevens("Brendon Urie","Panic! At the disco", "1992-11-07")
