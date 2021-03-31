@@ -69,6 +69,7 @@ def vraagOpConcertgegevensTabel():
 
 ### ---------Hoofdprogramma  ----------------
 MaakNieuweTabellen() #tabellen aangemaakt
+#vult de database tabellen met gegevens
 #artiestgegevens tabel
 vulTabelArtiestgegevensMetGegevens("Josh Dun","Twenty One Pilots", "1988-02-12")
 vulTabelArtiestgegevensMetGegevens("Brendon Urie","Panic! At the disco", "1992-11-07")
