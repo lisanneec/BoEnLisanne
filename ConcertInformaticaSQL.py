@@ -34,6 +34,7 @@ def MaakNieuweTabellen():
         Gebouwnaam TEXT NOT NULL);""")
 
 def printTabel(tabel_naam):
+    #print een tabel
     cursor.execute("SELECT * FROM " + tabel_naam)
     opgehaalde_gegevens = cursor.fetchall()
     print("Tabel " + tabel_naam + ":", opgehaalde_gegevens)
