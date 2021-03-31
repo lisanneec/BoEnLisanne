@@ -12,7 +12,7 @@ with sqlite3.connect("database.db") as db:
 
 ### ---------Functie definities  ----------------------
 def MaakNieuweTabellen():
-    #vult de database tabellen 
+    #maakt de database tabellen 
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS Artiestgegevens(
         Artiestnummer_ID INTEGER PRIMARY KEY AUTOINCREMENT,
